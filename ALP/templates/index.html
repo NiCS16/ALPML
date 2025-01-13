@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML Predictor Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group select {
+      cursor: pointer;
+    }
+
+    .form-group button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: #45a049;
+    }
+
+    .invalid {
+      border-color: red !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Obesity Level Predictor</h1>
+  </header>
+  <div class="container">
+    <form id="mlPredictorForm">
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" name="Gender" required>
+          <option value="">Select</option>
+          <option value="0">Female</option>
+          <option value="1">Male</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="Age" step="1" required>
+      </div>
+      <div class="form-group">
+        <label for="height">Height (m)</label>
+        <input type="number" id="height" name="Height" step="0.01" required>
+      </div>
+      <div class="form-group">
+        <label for="weight">Weight (kg)</label>
+        <input type="number" id="weight" name="Weight" step="0.1" required>
+      </div>
+      <div class="form-group">
+        <label for="family_history">Family History with Overweight</label>
+        <select id="family_history" name="family_history_with_overweight" required>
+          <option value="">Select</option>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="favc">Frequently Consumes High-Calorie Food</label>
+        <select id="favc" name="FAVC" required>
+          <option value="">Select</option>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="fcvc">Frequency of Vegetable Consumption</label>
+        <select id="fcvc" name="FCVC" required>
+          <option value="">Select</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Frequently</option>
+          <option value="3">Always</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ncp">Number of Main Meals Daily</label>
+        <input type="number" id="ncp" name="NCP" step="1" required>
+      </div>
+      <div class="form-group">
+        <label for="caec">Eating Habits Between Meals</label>
+        <select id="caec" name="CAEC" required>
+          <option value="">Select</option>
+          <option value="2">Sometimes</option>
+          <option value="1">Frequently</option>
+          <option value="0">Always</option>
+          <option value="3">No</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="smoke">Smokes</label>
+        <select id="smoke" name="SMOKE" required>
+          <option value="">Select</option>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ch2o">Daily Water Consumption</label>
+        <select id="ch2o" name="CH2O" required>
+          <option value="">Select</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Frequently</option>
+          <option value="3">Always</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="scc">Monitors Daily Calorie Intake</label>
+        <select id="scc" name="SCC" required>
+          <option value="">Select</option>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="faf">Frequency of Physical Activity</label>
+        <select id="faf" name="FAF" required>
+          <option value="">Select</option>
+          <option value="0">No</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Frequently</option>
+          <option value="3">Always</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="tue">Technology Usage Frequency</label>
+        <select id="tue" name="TUE" required>
+          <option value="">Select</option>
+          <option value="0">No</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Frequently</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="calc">Alcohol Consumption Frequency</label>
+        <select id="calc" name="CALC" required>
+          <option value="">Select</option>
+          <option value="0">No</option>
+          <option value="1">Sometimes</option>
+          <option value="2">Frequently</option>
+          <option value="3">Always</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="mtrans">Primary Mode of Transportation</label>
+        <select id="mtrans" name="MTRANS" required>
+          <option value="">Select</option>
+          <option value="4">Walking</option>
+          <option value="1">Bike</option>
+          <option value="3">Public Transportation</option>
+          <option value="0">Automobile</option>
+          <option value="2">Motorbike</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    <div id="result" class="result" style="display: none;"></div>
+    <div id="error" class="error" style="display: none;"></div>
+  </div>
+  <footer>
+    <p>&copy; 2025 Obesity Level Predictor. All rights reserved.</p>
+  </footer>
+  <script>
+    document.getElementById('mlPredictorForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(event.target);
+      const jsonData = Object.fromEntries(formData.entries());
+
+      // Log the data being sent to Flask
+      console.log("Data Sent to Flask:", jsonData);
+
+      fetch('/predict', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(jsonData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Response from Flask:", data);
+          if (data.prediction) {
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').textContent = `Prediction : ${data.prediction}`;
+            document.getElementById('error').style.display = 'none';
+          } else {
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error').textContent = `Error: ${data.error}`;
+            document.getElementById('result').style.display = 'none';
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          document.getElementById('error').style.display = 'block';
+          document.getElementById('error').textContent = `Error: ${error.message}`;
+        });
+    });
+  </script>
+</body>
+
+</html>
